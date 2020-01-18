@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_ee2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 19:16:04 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 19:16:05 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
-int ft_find_exp(t_long *lng)
+int		ft_find_exp(t_long *lng)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
+
 	i = lng->whole[0];
 	while (i > 0 && lng->whole[i] == 0)
 		i--;
@@ -15,13 +28,13 @@ int ft_find_exp(t_long *lng)
 			i++;
 		j = -i;
 	}
-	return (j);          
+	return (j);
 }
 
-void ft_fill_in_one_arr_e(uint *arr, t_long *lng, int j)
+void	ft_fill_in_one_arr_e(uint *arr, t_long *lng, int j)
 {
-	int i;
-	int k;
+	int		i;
+	int		k;
 
 	if (j > 0)
 	{
@@ -46,11 +59,10 @@ void ft_fill_in_one_arr_e(uint *arr, t_long *lng, int j)
 	}
 }
 
-
-int ft_put_value_in_e(uint *arr, t_s *sp, int j)	
+int		ft_put_value_in_e(uint *arr, t_s *sp, int j)
 {
-	int dig;
-	int i;
+	int		dig;
+	int		i;
 
 	dig = sp->decim + 1;
 	normalize_sci(arr, dig);
@@ -76,13 +88,13 @@ int ft_put_value_in_e(uint *arr, t_s *sp, int j)
 	return (j);
 }
 
-int ft_put_e_zero(t_s *sp)
+int		ft_put_e_zero(t_s *sp)
 {
 	write(1, "0", 1);
-	if(sp->decim > 0)
+	if (sp->decim > 0)
 	{
 		write(1, ".", 1);
-		ft_put_n_chars(48, sp->decim);			
+		ft_put_n_chars(48, sp->decim);
 	}
 	if (sp->s == 'e')
 		write(1, "e+00", 4);
@@ -91,13 +103,13 @@ int ft_put_e_zero(t_s *sp)
 	return (sp->point + sp->decim + 5);
 }
 
-int ft_put_sci(double x, t_s *sp)
+int		ft_put_sci(double x, t_s *sp)
 {
-	int i;
-	int j;
-	t_long *lng;
-	uint *arr;
-	int count;
+	int		i;
+	int		j;
+	t_long	*lng;
+	uint	*arr;
+	int		count;
 
 	if (x == 0)
 		return (ft_put_e_zero(sp));

@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_long_dbl1.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 22:09:50 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 22:09:53 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
-
-t_long	*ft_create_LONG_pre(u_long_dbl *num_DBL)
+t_long	*ft_create_long_pre(u_long_dbl *num_dbl)
 {
 	double		log2;
 	t_long		*lng2;
@@ -11,9 +22,9 @@ t_long	*ft_create_LONG_pre(u_long_dbl *num_DBL)
 	log2 = 0.30103;
 	lng2 = (t_long *)malloc(sizeof(t_long));
 	lng2->flag = 1UL << 62;
-	if (num_DBL->parts.exponent >= 16383)
+	if (num_dbl->parts.exponent >= 16383)
 	{
-		exp = num_DBL->parts.exponent - 16383;
+		exp = num_dbl->parts.exponent - 16383;
 		n = log2 * exp + 4;
 		lng2->whole = power_of_2(exp, n);
 	}
@@ -27,24 +38,23 @@ t_long	*ft_create_LONG_pre(u_long_dbl *num_DBL)
 	return (lng2);
 }
 
-
-t_long	*ft_create_LONG_whole(u_long_dbl *num_DBL)
+t_long	*ft_create_long_whole(u_long_dbl *num_dbl)
 {
 	t_long		*lng2;
 	uint		exp;
 	int			n;
 	uint		*b;
 
-	lng2 = ft_create_LONG_pre(num_DBL);
-	if (num_DBL->parts.exponent >= 16383)
+	lng2 = ft_create_long_pre(num_dbl);
+	if (num_dbl->parts.exponent >= 16383)
 	{
-		exp = num_DBL->parts.exponent - 16383;
+		exp = num_dbl->parts.exponent - 16383;
 		n = (int)(0.30103 * exp + 4.0);
 		b = power_of_2(exp, n);
 		while (exp > 0)
 		{
 			divide_by_2(b);
-			if (lng2->flag & num_DBL->parts.mantissa)
+			if (lng2->flag & num_dbl->parts.mantissa)
 				add_arithmetics(lng2->whole, b);
 			lng2->flag = lng2->flag >> 1;
 			exp--;
@@ -54,7 +64,7 @@ t_long	*ft_create_LONG_whole(u_long_dbl *num_DBL)
 	return (lng2);
 }
 
-int ft_create_n_temp(uint exp_, int d)
+int		ft_create_n_temp(uint exp_, int d)
 {
 	int			n;
 	double		log2;
@@ -70,7 +80,7 @@ int ft_create_n_temp(uint exp_, int d)
 	return (n);
 }
 
-uint *ft_create_b_temp(uint exp_, int d, int n)
+uint	*ft_create_b_temp(uint exp_, int d, int n)
 {
 	uint		*b;
 	double		log2;
@@ -80,7 +90,7 @@ uint *ft_create_b_temp(uint exp_, int d, int n)
 	else
 	{
 		exp_ = 16383 - exp_;
-		b = divide_by_minus_2(NULL, n);	
+		b = divide_by_minus_2(NULL, n);
 		while (exp_ > 1)
 		{
 			divide_by_minus_2(b, n);
@@ -90,16 +100,16 @@ uint *ft_create_b_temp(uint exp_, int d, int n)
 	return (b);
 }
 
-void	ft_create_LONG_decimal(t_long *lng2, u_long_dbl *num_DBL, int d)
+void	ft_create_long_decimal(t_long *lng2, u_long_dbl *num_dbl, int d)
 {
 	uint		*b;
 	int			n;
 	uint		exp_;
 	double		log2;
 
-	n = ft_create_n_temp(num_DBL->parts.exponent, d);
-	b = ft_create_b_temp(num_DBL->parts.exponent, d, n);
-	if (num_DBL->parts.exponent >= 16383)
+	n = ft_create_n_temp(num_dbl->parts.exponent, d);
+	b = ft_create_b_temp(num_dbl->parts.exponent, d, n);
+	if (num_dbl->parts.exponent >= 16383)
 		lng2->decimal = set_arithmetic_zeros(n);
 	else
 	{
@@ -109,7 +119,7 @@ void	ft_create_LONG_decimal(t_long *lng2, u_long_dbl *num_DBL, int d)
 	}
 	while (lng2->flag)
 	{
-		if (lng2->flag & num_DBL->parts.mantissa)
+		if (lng2->flag & num_dbl->parts.mantissa)
 			add_arithmetics_minus(lng2->decimal, b);
 		divide_by_minus_2(b, n);
 		lng2->flag = lng2->flag >> 1;

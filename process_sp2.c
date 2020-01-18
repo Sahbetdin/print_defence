@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_sp2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:54:56 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:54:58 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
 void	set_plus(char *p, char *s, t_s *sp)
@@ -5,9 +17,7 @@ void	set_plus(char *p, char *s, t_s *sp)
 	while (*p && p < s)
 	{
 		if (*p == ' ' || *p == '\t' || *p == '#' || *p == '0' || *p == '-')
- 		{
- 			p++;
- 		}
+			p++;
 		else if (*p == '+')
 		{
 			sp->plus = 1;
@@ -23,7 +33,7 @@ void	set_minus(char *p, char *s, t_s *sp)
 	while (*p && p < s)
 	{
 		if (*p == ' ' || *p == '\t' || *p == '#' || *p == '0' || *p == '+')
- 			p++;
+			p++;
 		else if (*p == '-')
 		{
 			sp->minus = 1;
@@ -46,16 +56,15 @@ void	set_backsp(char *p, char *s, t_s *sp)
 		}
 		else
 			p++;
-
 	}
 	return ;
 }
 
-char *set_point(char *p, char *s, t_s *sp)
+char	*set_point(char *p, char *s, t_s *sp)
 {
 	while (*p && p < s)
 	{
-		if (*p == ' ' || *p == '\t' || (*p >= '0' && *p <= '9') 
+		if (*p == ' ' || *p == '\t' || (*p >= '0' && *p <= '9')
 		|| *p == '+' || *p == '-' || *p == '#')
 			p++;
 		else if (*p == '.')
@@ -71,8 +80,8 @@ char *set_point(char *p, char *s, t_s *sp)
 
 void	set_numb(char *p, char *s, t_s *sp)
 {
-	while (*p && p < s && (*p == ' ' || *p == '\t' 
+	while (*p && p < s && (*p == ' ' || *p == '\t'
 		|| *p == '+' || *p == '-' || *p == '#' || *p == '0'))
-			p++;
+		p++;
 	sp->numb = ft_atoi(p);
 }

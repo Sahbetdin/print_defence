@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_d2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 19:14:56 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 19:14:57 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
-int ft_put_int_min_with_spec(int num, t_s *sp)
+int		ft_put_int_min_with_spec(int num, t_s *sp)
 {
 	int l;
 	int k;
@@ -23,7 +35,7 @@ int ft_put_int_min_with_spec(int num, t_s *sp)
 	return (dig);
 }
 
-int ft_put_d_withOUT_numb_point(long num, t_s *sp)
+int		ft_put_d_without_numb_point(long num, t_s *sp)
 {
 	if (sp->plus && !sp->sign)
 		write(1, "+", 1);
@@ -40,7 +52,7 @@ void	ft_put_d_pl_si_mi(long num, int k, int l, t_s *sp)
 	write(1, "+", 1);
 	ft_put_n_chars(48, l);
 	if (!(sp->point && num == 0))
-	ft_put_long(num);
+		ft_put_long(num);
 	ft_put_n_chars(32, k);
 }
 

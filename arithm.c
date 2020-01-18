@@ -1,14 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arithm.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:28:01 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:28:13 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
-/*
-adds two numbers which are in long arithmetics
-each of them has n digits (or elements)
-returns first one
-*/
-
-uint *add_arithmetics(uint *a, uint *b)
+uint	*add_arithmetics(uint *a, uint *b)
 {
-	int i;
+	int		i;
 
 	i = 1;
 	while (i < a[0])
@@ -24,12 +30,10 @@ uint *add_arithmetics(uint *a, uint *b)
 	return (a);
 }
 
-
-
-uint *set_arithmetic_zeros(int n)
+uint	*set_arithmetic_zeros(int n)
 {
-	uint *s;
-	int i;
+	uint	*s;
+	int		i;
 
 	s = (uint *)malloc(sizeof(uint) * (n + 1));
 	s[0] = n;
@@ -39,17 +43,12 @@ uint *set_arithmetic_zeros(int n)
 	return (s);
 }
 
-/*
-ATTENTION! used for negative orders of 2
-number of digits is taken from a
-*/
-
-uint *add_arithmetics_minus(uint *a, uint *b)
+uint	*add_arithmetics_minus(uint *a, uint *b)
 {
-	int i;
+	int		i;
 
 	i = b[0];
-	while (i && b[i] == 0)  // we run through b because it has more digits
+	while (i && b[i] == 0)
 		i--;
 	while (i > 0)
 	{

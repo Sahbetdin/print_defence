@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:42:40 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:42:42 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	ch;
+	char		ch;
 
 	ch = (char)c;
 	while (*s)
@@ -18,10 +30,10 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strdup(const char *s1)
 {
-	char	*tmp;
-	char	*p;
-	size_t	i;
-	size_t	n;
+	char		*tmp;
+	char		*p;
+	size_t		i;
+	size_t		n;
 
 	i = 0;
 	p = (char *)s1;
@@ -40,9 +52,9 @@ char	*ft_strdup(const char *s1)
 	return (tmp);
 }
 
-int	ft_cut_backspaces(const char *s)
+int		ft_cut_backspaces(const char *s)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	while (s[i] && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n' \
@@ -51,8 +63,7 @@ int	ft_cut_backspaces(const char *s)
 	return (i);
 }
 
-
-int	    ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	int			i;
 	long long	res;
@@ -78,7 +89,7 @@ int	    ft_atoi(const char *str)
 	return (sign * res);
 }
 
-int			ft_atoi2(const char *str, char *end)
+int		ft_atoi2(const char *str, char *end)
 {
 	int			i;
 	long long	res;
@@ -87,7 +98,7 @@ int			ft_atoi2(const char *str, char *end)
 	res = 0;
 	i = 0;
 	sign = 1;
-	i += ft_cut_backspaces (&str[i]);
+	i += ft_cut_backspaces(&str[i]);
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '+' || str[i] == '-')

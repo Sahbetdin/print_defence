@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_double.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:49:18 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:49:21 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
 void	print_memory(uint *s)
 {
-	int i;
-	char u;
+	int		i;
+	char	u;
 
 	ft_putnbr_positive(s[0]);
 	write(1, " ", 1);
 	i = 1;
 	while (i <= s[0])
 	{
-		u = (char )(s[i] + 48);
+		u = (char)(s[i] + 48);
 		write(1, &u, 1);
 		i++;
 		if (i % 4 == 1)
@@ -19,11 +31,11 @@ void	print_memory(uint *s)
 	write(1, "\n", 1);
 }
 
-int print_double_whole_part(uint *s)
+int		print_double_whole_part(uint *s)
 {
-	int i;
-	int count;
-	char u;
+	int		i;
+	int		count;
+	char	u;
 
 	i = s[0];
 	count = 0;
@@ -44,10 +56,10 @@ int print_double_whole_part(uint *s)
 	return (count);
 }
 
-int print_double_decimal_part(uint *s, int n)
+int		print_double_decimal_part(uint *s, int n)
 {
-	unsigned char u;
-	int i;
+	uchar	u;
+	int		i;
 
 	i = 1;
 	while (i <= n)
@@ -59,10 +71,10 @@ int print_double_decimal_part(uint *s, int n)
 	return (n);
 }
 
-
-void print_binary_uint(uint num, int dig)
+void	print_binary_uint(uint num, int dig)
 {
-	uint flag;
+	uint	flag;
+
 	if (dig > 31 || dig < 0)
 		return ;
 	flag = 1 << dig;
@@ -77,10 +89,9 @@ void print_binary_uint(uint num, int dig)
 	write(1, "\n", 1);
 }
 
-
-void print_binary_ulong(ulong num, int dig)
+void	print_binary_ulong(ulong num, int dig)
 {
-	ulong flag;
+	ulong	flag;
 
 	if (dig > 63 || dig < 0)
 		return ;

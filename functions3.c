@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions3.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:42:45 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:42:48 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
-int digits_in_base(long value, int base)
+int	digits_in_base(long value, int base)
 {
-	int i;
-	i = 0;
+	int		i;
 
+	i = 0;
 	if (value == 0)
 		return (1);
 	while (value)
@@ -15,9 +27,9 @@ int digits_in_base(long value, int base)
 	return (i);
 }
 
-int digits_in_base_unsigned(ulong u_value, int base)
+int	digits_in_base_unsigned(ulong u_value, int base)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (u_value == 0)
@@ -32,7 +44,7 @@ int digits_in_base_unsigned(ulong u_value, int base)
 
 int	ft_putnbr_positive(int n)
 {
-	int i;
+	int		i;
 
 	i = (n < 0) ? 1 : 0;
 	if (n > 9)
@@ -42,29 +54,29 @@ int	ft_putnbr_positive(int n)
 	return (i);
 }
 
-int        ft_putlong(long n)
+int	ft_putlong(long n)
 {
-	int     i;
-	long    max_d;
-	long    digit;
+	int		i;
+	long	max_d;
+	long	digit;
 
 	i = 0;
 	if (n < 0)
 	{
-	    ft_putchar('-');
-	    n = -n;
-	    i++;
+		ft_putchar('-');
+		n = -n;
+		i++;
 	}
 	max_d = 1;
-	while (max_d <= n/10)
-	    max_d *= 10;
+	while (max_d <= n / 10)
+		max_d *= 10;
 	while (max_d)
 	{
-	    digit = n / max_d;
-	    ft_putchar(digit + '0');
-	    n -= max_d * digit;
-	    max_d /= 10;
-	    i++;
-    }
-    return (i);
+		digit = n / max_d;
+		ft_putchar(digit + '0');
+		n -= max_d * digit;
+		max_d /= 10;
+		i++;
+	}
+	return (i);
 }

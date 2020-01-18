@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions4.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:42:51 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:42:58 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
 int		ft_itoa_base_unsigned(ulong u_value, int base, int lett_type)
@@ -11,7 +23,7 @@ int		ft_itoa_base_unsigned(ulong u_value, int base, int lett_type)
 		return (ft_putchar('0'));
 	if (lett_type)
 		letters = ft_strdup("0123456789ABCDEF");
-	else 
+	else
 		letters = ft_strdup("0123456789abcdef");
 	n = digits_in_base_unsigned(u_value, base);
 	s = (char *)malloc(sizeof(char) * (n + 1));
@@ -28,3 +40,4 @@ int		ft_itoa_base_unsigned(ulong u_value, int base, int lett_type)
 	free(s);
 	return (n);
 }
+

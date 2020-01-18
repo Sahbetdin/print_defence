@@ -176,10 +176,14 @@ int main()
 	// c2 = ft_printf("%#xA\n", 1456283299);
 	// printf("| c1 = %d, c2 = %d; diff = %d\n", c1, c2, c1 - c2);
 
+	
+	c2 = ft_printf("%V\n", 0.2);
+	c2 = ft_printf("%W\n", 0.2l);
 
-	   c1 = printf("%.xA\n", 0);
-	c2 = ft_printf("%.xA\n", 0);
-	printf("| c1 = %d, c2 = %d; diff = %d\n", c1, c2, c1 - c2);
+
+	//    c1 = printf("%.xA\n", 0);
+	// c2 = ft_printf("%.xA\n", 0);
+	// printf("| c1 = %d, c2 = %d; diff = %d\n", c1, c2, c1 - c2);
 
 	//    c1 = printf("%LfA\n", 0.0l);
 	// c2 = ft_printf("%LfA\n", 0.0l);

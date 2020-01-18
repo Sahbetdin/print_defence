@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_hex_oct1.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 20:12:56 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 20:12:57 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
 void	ft_put_prelimenaries(long num, t_s *sp)
@@ -6,24 +18,24 @@ void	ft_put_prelimenaries(long num, t_s *sp)
 	{
 		if (sp->hash == 1)
 			write(1, "0", 1);
-		else if ((sp->s == 'x' || 
+		else if ((sp->s == 'x' ||
 			(sp->s == 'h' && sp->s1 == 'x') ||
-			(sp->s == 'l' && sp->s1 == 'x') ||			
+			(sp->s == 'l' && sp->s1 == 'x') ||
 			(sp->s == 'h' && sp->s1 == 'h' && sp->s2 == 'x') ||
-			(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'x')) && 
+			(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'x')) &&
 			sp->hash == 2)
-			write(1, "0x", 2);	
-		else if ((sp->s == 'X' || 
+			write(1, "0x", 2);
+		else if ((sp->s == 'X' ||
 			(sp->s == 'h' && sp->s1 == 'X') ||
 			(sp->s == 'l' && sp->s1 == 'X') ||
 			(sp->s == 'h' && sp->s1 == 'h' && sp->s2 == 'X') ||
-			(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'X')) && 
+			(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'X')) &&
 			sp->hash == 2)
 			write(1, "0X", 2);
 	}
 }
 
-int ft_put_integer_u(ulong u_value, t_s *sp)
+int		ft_put_integer_u(ulong u_value, t_s *sp)
 {
 	int n;
 
@@ -38,7 +50,7 @@ int ft_put_integer_u(ulong u_value, t_s *sp)
 	(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'o') ||
 	(sp->s == 'h' && sp->s1 == 'h' && sp->s2 == 'o'))
 		n += ft_itoa_base_unsigned(u_value, 8, 0);
-	else if (sp->s == 'x' || 
+	else if (sp->s == 'x' ||
 		(sp->s == 'l' && sp->s1 == 'x') ||
 		(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'x') ||
 		(sp->s == 'h' && sp->s1 == 'x') ||
@@ -46,15 +58,15 @@ int ft_put_integer_u(ulong u_value, t_s *sp)
 		n += ft_itoa_base_unsigned(u_value, 16, 0);
 	else if (sp->s == 'X' ||
 		(sp->s == 'l' && sp->s1 == 'X') || (sp->s == 'h' && sp->s1 == 'X') ||
-		(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'X') ||		
+		(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'X') ||
 		(sp->s == 'h' && sp->s1 == 'h' && sp->s2 == 'X'))
 		n += ft_itoa_base_unsigned(u_value, 16, 1);
 	return (n);
 }
 
-int ft_dig_from_spec(ulong num, t_s *sp)
+int		ft_dig_from_spec(ulong num, t_s *sp)
 {
-	int dig;
+	int	dig;
 
 	if (sp->s == 'u' || (sp->s == 'l' && sp->s1 == 'u') ||
 		(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'u') ||
@@ -68,129 +80,25 @@ int ft_dig_from_spec(ulong num, t_s *sp)
 		(sp->s == 'h' && sp->s1 == 'h' && sp->s2 == 'o'))
 		dig = digits_in_base_unsigned(num, 8);
 	else if (sp->s == 'x' || sp->s == 'X' ||
-		( (sp->s == 'l' && (sp->s1 == 'x' || sp->s1 == 'X'))) ||
+		((sp->s == 'l' && (sp->s1 == 'x' || sp->s1 == 'X'))) ||
 		(sp->s == 'l' && sp->s1 == 'l' && (sp->s2 == 'x' || sp->s2 == 'X'))
 		|| (sp->s == 'h' && (sp->s1 == 'x' || sp->s1 == 'X')) ||
 		(sp->s == 'h' && sp->s1 == 'h' && (sp->s2 == 'x' || sp->s2 == 'X')))
 		dig = digits_in_base_unsigned(num, 16);
 	return (dig);
-
 }
 
 ulong	ft_cast_num_ulong(ulong num, t_s *sp)
 {
-	if (sp->s == 'u' ||sp->s == 'o' ||
+	if (sp->s == 'u' || sp->s == 'o' ||
 		sp->s == 'x' || sp->s == 'X')
 		num = (uint)num;
 	else if (sp->s == 'h' && (sp->s1 == 'x' || sp->s1 == 'X'))
 		num = (unsigned short)num;
-	else if (sp->s == 'h' && sp->s1 == 'h' && (sp->s2 == 'x' || sp->s2 == 'X' || sp->s2 == 'o' || sp->s2 == 'u'))
+	else if (sp->s == 'h' && sp->s1 == 'h' && (sp->s2 == 'x' ||
+	sp->s2 == 'X' || sp->s2 == 'o' || sp->s2 == 'u'))
 		num = (unsigned char)num;
 	else if (sp->s == 'h' && (sp->s1 == 'o' || sp->s1 == 'u'))
 		num = (unsigned short)num;
 	return (num);
-}
-
-void	ft_modify_from_hash(ulong num, t_s *sp)
-{
-	if (sp->hash)
-	{
-		if (sp->s == 'x' || sp->s == 'X' ||
-		(sp->s == 'h' && (sp->s1 == 'x' || sp->s1 == 'X')) ||
-		(sp->s == 'l' && (sp->s1 == 'x' || sp->s1 == 'X')) ||
-		(sp->s == 'l' && sp->s1 == 'l' && (sp->s2 == 'x' || sp->s2 == 'X')) ||
-		(sp->s == 'h' && sp->s1 == 'h' && (sp->s2 == 'x' || sp->s2 == 'X')))
-			sp->hash = 2;
-		if (num == 0 && (!sp->point || sp->hash == 2))
-			sp->hash = 0;	
-	}
-}
-
-int ft_put_x_o_po_mi()
-{
-	return (0);
-}
-
-int ft_put_x_o_npo_nmi(ulong num, t_s *sp, int k)
-{
-	int n;
-
-
-	if (sp->zero)
-	{
-		ft_put_prelimenaries(num, sp);
-		ft_put_n_chars(48, k);
-	}
-	else
-	{
-		ft_put_n_chars(32, k);
-		ft_put_prelimenaries(num, sp);
-	}
-	n = ft_put_integer_u(num, sp);
-
-}
-
-int		ft_put_x_o(ulong num, t_s *sp)
-{
-	int n;
-	int dig;
-	int l;
-	int k;
-	
-	num = ft_cast_num_ulong(num, sp);
-	dig = ft_dig_from_spec(num, sp);
-	ft_modify_from_hash(num, sp);
-	n = 0;
-	if (sp->point)
-	{//%.x, 0
-		if (num == 0)
-			dig = 0;
-		l = (sp->decim > dig) ? sp->decim - dig : 0;
-		if (l > 2 && sp->hash == 1)
-			l--;
-		if (l == 0 && sp->hash == 1)
-		{
-			sp->hash = 0;
-			l = 1;
-		}
-		k = (sp->numb > sp->decim) ? sp->numb: sp->decim;
-		k -= dig + l + sp->hash;
-		if (k < 0)
-			k = 0;
-		if (sp->minus)
-		{
-			ft_put_prelimenaries(num, sp);
-			ft_put_n_chars(48, l);
-			if (num != 0)
-				n = ft_put_integer_u(num, sp);
-			ft_put_n_chars(32, k);
-		}
-		else
-		{
-			ft_put_n_chars(32, k);
-			ft_put_prelimenaries(num, sp);
-			ft_put_n_chars(48, l);
-			if (num != 0)
-				n = ft_put_integer_u(num, sp);
-		}
-	}
-	else
-	{
-		l = 0;
-		k = (sp->numb > dig) ? sp->numb - dig : 0;
-		k -= sp->hash;
-		if (k < 0)
-			k = 0;
-		if (sp->minus)
-		{
-			ft_put_prelimenaries(num, sp);
-			n = ft_put_integer_u(num, sp);
-			ft_put_n_chars(32, k);
-		}
-		else
-		{
-		...
-		}
-	}
-	return (n + k + l + sp->hash);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_ee1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 19:15:58 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 19:15:59 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
 void	ft_put_sign(t_s *sp)
@@ -22,7 +34,6 @@ void	ft_put_exp(t_s *sp, int dig)
 
 int		ft_put_exp_value(int exp_)
 {
-	// printf("exp_ = %d\n", exp_);
 	if (exp_ < 0)
 		exp_ = -exp_;
 	else
@@ -46,7 +57,7 @@ int		ft_put_exp_value(int exp_)
 
 void	normalize_sci(uint *s, int d)
 {
-	int i;
+	int		i;
 
 	i = d;
 	if (s[i + 1] > 4)
@@ -63,17 +74,15 @@ void	normalize_sci(uint *s, int d)
 
 uint	*create_one_array_e(t_long *lng)
 {
-	uint *arr;
-	int i;
+	uint	*arr;
+	int		i;
 
-	if (!(arr = (uint *)malloc(sizeof(uint) * (lng->whole[0] + lng->decimal[0] + 1))))
+	if (!(arr = (uint *)malloc(sizeof(uint) * (lng->whole[0] +
+	lng->decimal[0] + 1))))
 		return (NULL);
 	arr[0] = lng->whole[0] + lng->decimal[0];
-	//malloc and fill in with zeros
-
 	i = 0;
 	while (++i < arr[0])
 		arr[i] = 0;
-
 	return (arr);
 }

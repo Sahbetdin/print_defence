@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions1.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:42:33 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:42:36 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
-int	ft_putchar(char c)
+int		ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -10,7 +22,6 @@ void	ft_put_zeros_backsp(t_s *sp)
 {
 	if (sp->numb > 1)
 	{
-
 		if (sp->zero)
 			ft_put_n_chars(48, sp->numb - 1);
 		else
@@ -20,9 +31,10 @@ void	ft_put_zeros_backsp(t_s *sp)
 		sp->numb = 1;
 }
 
-int	ft_putchar_c(char c, t_s *sp)
+int		ft_putchar_c(char c, t_s *sp)
 {
-	int k;
+	int		k;
+
 	if (sp->minus)
 	{
 		write(1, &c, 1);
@@ -46,9 +58,9 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_putstr(char const *s)
+int		ft_putstr(char const *s)
 {
-	int n;
+	int		n;
 
 	if (s)
 	{

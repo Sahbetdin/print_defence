@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_sp1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/18 18:52:04 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/18 18:52:06 by btrifle          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test_header.h"
 
-void print_sp(t_s *sp)
+void	print_sp(t_s *sp)
 {
 	printf("spec: %c\n", sp->s);
 	printf("spec1: %c\n", sp->s1);
@@ -34,7 +46,7 @@ void	clear_spec(t_s *sp)
 	return ;
 }
 
-void handle_lhL(char *p, t_s *sp)
+void	handle_lhl(char *p, t_s *sp)
 {
 	sp->s = *p;
 	if (*p == 'l')
@@ -53,21 +65,21 @@ void handle_lhL(char *p, t_s *sp)
 		sp->s1 = *(p + 1);
 }
 
-char *find_spec(char *p, t_s *sp)
+char	*find_spec(char *p, t_s *sp)
 {
-	char *lett;
+	char	*lett;
 
 	lett = ft_strdup("diuolhxXfFLeEgGaAcspnVW%");
 	while (*p)
 	{
 		if (*p == ' ' || *p == '\t' || *p == '.' || (*p >= '0' && *p <= '9')
-		 || *p == '+' || *p == '-' || *p == '#')
- 			p++;
+			|| *p == '+' || *p == '-' || *p == '#')
+			p++;
 		else if (ft_strchr(lett, *p))
 		{
-			handle_lhL(p, sp);
+			handle_lhl(p, sp);
 			free(lett);
-			return (p); 
+			return (p);
 		}
 		else
 		{
@@ -84,11 +96,11 @@ void	set_zero(char *p, char *s, t_s *sp)
 	while (*p && p < s)
 	{
 		if (*p == ' ' || *p == '\t' || *p == '+' || *p == '-' || *p == '#')
- 			p++;
+			p++;
 		else if (*p == '0')
 		{
 			sp->zero = *p;
-			return ; 
+			return ;
 		}
 		else
 			return ;
