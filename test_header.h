@@ -96,33 +96,67 @@ int     ft_putnbr_positive(int n);
 int     ft_putlong(long n);
 //functions4.c
 int     ft_itoa_base_unsigned(ulong u_value, int base, int lett_type);
+//put_ee1.c
+void	ft_put_sign(t_s *sp);
+void	ft_put_exp(t_s *sp, int dig);
+int		ft_put_exp_value(int exp_);
+void	normalize_sci(uint *s, int d);
+uint	*create_one_array_e(t_long *lng);
+//put_ee2.c
+int		ft_find_exp(t_long *lng);
+void	ft_fill_in_one_arr_e(uint *arr, t_long *lng, int j);
+int		ft_put_value_in_e(uint *arr, t_s *sp, int j);
+int		ft_put_e_zero(t_s *sp);
+int		ft_put_sci(double x, t_s *sp);
+//put_ee3.c
+int		ft_dig_db(double a);
+int		ft_get_k_for_e(double x, t_s *sp);
+int		ft_put_whole_sci(double x, t_s *sp);
+//put_long_dbl1.c
+t_long	*ft_create_LONG_pre(u_long_dbl *num_DBL);
+t_long	*ft_create_LONG_whole(u_long_dbl *num_DBL);
+int		ft_create_n_temp(uint exp_, int d);
+uint	*ft_create_b_temp(uint exp_, int d, int n);
+void	ft_create_LONG_decimal(t_long *lng2, u_long_dbl *num_DBL, int d);
+//put_long_dbl2.c
+int		ft_put_LONG_only(u_long_dbl *num_DBL, t_s *sp);
+int		ft_dig_LDBL(long double a);
+void	ft_put_from_specif_LDBL_minus(u_long_dbl *num_DBL, t_s *sp, int k);
+void	ft_put_from_specif_LDBL(u_long_dbl *num_DBL, t_s *sp, int k);
+int		ft_get_k_for_LDBL(t_s *sp, int dig);
+//put_long_dbl3.c
+int		ft_put_LONG_double(long double x, t_s *sp);
+//put_d1.c
+void	ft_put_n_chars(char c, int n);
+void	ft_put_long(long num);
+int		ft_put_int_min(int k, t_s *sp);
+int		ft_put_int_min_with_point(t_s *sp);
+void	ft_put_int_min_minus(t_s *sp, int k, int l);
+//put_d2.c
+int		ft_put_int_min_with_spec(int num, t_s *sp);
+int		ft_put_d_withOUT_numb_point(long num, t_s *sp);
+void	ft_put_d_pl_si_mi(long num, int k, int l, t_s *sp);
+void	ft_put_d_pl_nsi_ze(long num, int k, int l, t_s *sp);
+void	ft_put_d_pl_nsi(long num, int k, int l, t_s *sp);
+//put_d3.c
+void	ft_put_d_npl_nsi_mi_ba(long num, int *k, int l, t_s *sp);
+void	ft_put_d_npl_nsi_ze(long num, int k, int l, t_s *sp);
+void	ft_put_d_npl_nsi_mi(long num, int k, int l, t_s *sp);
+void	ft_put_d_si_mi(long num, int k, int l);
+void	ft_put_si_ze(long num, int k, int l, t_s *sp);
 //put_p.c
 int		ft_put_p_zero(t_s *sp);
 int		ft_put_p_minus(long num, int l, int k);
 int		ft_put_p(long num, t_s *sp);
 //put_strings.c
+int		ft_put_percentage(t_s *sp);
+int		ft_put_null(t_s *sp);
 int		ft_get_l_strings(t_s *sp, int n);
 int		ft_get_k_strings(t_s *sp, int l, int n);
 int		ft_put_string(char *str, t_s *sp);
-//put_ee1.c
-void ft_put_sign(t_s *sp);
-void ft_put_exp(t_s *sp, int dig);
-int ft_put_exp_value(int exp_);
-void normalize_sci(uint *s, int d);
-uint *create_one_array_e(t_long *lng);
-//put_ee2.c
-int ft_find_exp(t_long *lng);
-void ft_fill_in_one_arr_e(uint *arr, t_long *lng, int j);
-int ft_put_value_in_e(uint *arr, t_s *sp, int j);
-int ft_put_e_zero(t_s *sp);
-int ft_put_sci(double x, t_s *sp);
-//put_ee3.c
-int ft_dig_db(double a);
-int ft_get_k_for_e(double x, t_s *sp);
-int ft_put_whole_sci(double x, t_s *sp);
 
 
-
+int		ft_put_d(long num, t_s *sp);
 
 int		ft_put_whole_double(double a, t_s *sp);
 int		ft_putdouble(double a, t_s *sp);
@@ -132,17 +166,13 @@ void	set_numb(char *p, char *s, t_s *sp);
 void	set_decimal(char *p, t_s *sp);
 void	set_hash(char *p, char *s, t_s *sp);
 char	*parse_sier(char *p, t_s *sp);
-//int		ft_put_int_min(int num, t_s *sp);
-int		ft_put_int_min_with_spec(int num, t_s *sp);
-void	ft_put_long_long(long long num);
-void	ft_put_n_chars(char c, int n);
+
 int		ft_put_percentage(t_s *sp);
 int		ft_put_parsed_integer_u(uint num, t_s *sp);
 int		ft_put_integer_u(ulong u_value, t_s *sp);
 int		ft_put_string(char *str, t_s *sp);
-int		ft_put_d(long long num, t_s *sp);
-int		ft_put_d_withOUT_numb_point(long long num, t_s *sp);
-int		ft_put_d_with_numb_point(long long num, t_s *sp, int dig);
+
+int		ft_put_d_with_numb_point(long num, t_s *sp, int dig);
 int		ft_put_x_o(ulong num, t_s *sp);
 void	ft_put_prelimenaries(long num, t_s *sp);
 //f, F, Lf, e, E
@@ -158,7 +188,6 @@ uint	*add_arithmetics_minus(uint *a, uint *b);
 uint	*set_whole_part(u_double *N);
 void	normalize(uint *a, uint *s, int dig);
 int		put_double_NEW(double x, t_s *sp);
-int		ft_put_LONG_double(long double x, t_s *sp);
 void	free_long_arithm(t_long *lng);
 int		ft_put_whole_double(double a, t_s *sp);
 int		ft_put_f_double(double a, t_s *sp);
@@ -196,15 +225,6 @@ int ft_dig_LONG(long double a);
 int ft_get_k_for_e_LDBL(long double x, t_s *sp);
 int ft_put_whole_sci_LDBL(long double x, t_s *sp);
 
-t_long	*ft_create_LONG_pre(u_long_dbl *num_DBL);
-t_long	*ft_create_LONG_whole(u_long_dbl *num_DBL);
-int ft_create_n_temp(uint exp_, int d);
-uint *ft_create_b_temp(uint exp_, int d, int n);
-void	ft_create_LONG_decimal(t_long *lng2, u_long_dbl *num_DBL, int d);
-int		ft_put_LONG_only(u_long_dbl *num_DBL, t_s *sp);
-int ft_dig_LDBL(long double a);
-void	ft_put_from_specif_LDBL_minus(u_long_dbl *num_DBL, t_s *sp, int k);
-void	ft_put_from_specif_LDBL(u_long_dbl *num_DBL, t_s *sp, int k);
 int		ft_put_LONG_double(long double x, t_s *sp);
 
 //sign

@@ -1,11 +1,11 @@
 #include "test_header.h"
 
-
 /*
 adds two numbers which are in long arithmetics
 each of them has n digits (or elements)
 returns first one
 */
+
 uint *add_arithmetics(uint *a, uint *b)
 {
 	int i;
@@ -43,6 +43,7 @@ uint *set_arithmetic_zeros(int n)
 ATTENTION! used for negative orders of 2
 number of digits is taken from a
 */
+
 uint *add_arithmetics_minus(uint *a, uint *b)
 {
 	int i;

@@ -44,8 +44,6 @@ int		ft_put_exp_value(int exp_)
 		return (5);
 }
 
-
-//s это не ДЕСЯТАЯ ЧАСТЬ, это элемент объединенного массива
 void	normalize_sci(uint *s, int d)
 {
 	int i;
@@ -63,8 +61,6 @@ void	normalize_sci(uint *s, int d)
 	}
 }
 
-
-//we create new array "arr" where whole and decimal parts stored
 uint	*create_one_array_e(t_long *lng)
 {
 	uint *arr;

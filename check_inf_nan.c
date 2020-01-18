@@ -1,7 +1,9 @@
 #include "test_header.h"
 
+/*
+** writes "inf" or "INF" depending on %f or %F specifier
+*/
 
-//writes "inf" or "INF" depending on %f or %F specifier
 int put_inf(t_s *sp)
 {
 	if (sp->s == 'f' || sp->s == 'e')
@@ -29,9 +31,13 @@ void ft_put_nan(t_s *sp)
 	else if (sp->s == 'F' || sp->s == 'E' || sp->s1 == 'F')
 		write (1, "NAN", 3);
 }
-//this function checks if the exponent is equal to 2047
-//if yes then the number is candidate to NaN or inf
-//if mantissa is 0 then it's inf. Otherwise, NaN.
+
+/*
+** this function checks if the exponent is equal to 2047
+** if yes then the number is candidate to NaN or inf
+** if mantissa is 0 then it's inf. Otherwise, NaN.
+*/
+
 int check_double_inf(double a, t_s *sp)
 {
 	u_double num;
@@ -39,7 +45,6 @@ int check_double_inf(double a, t_s *sp)
 	int k;
 
 	num.dbl = a;
-	
 	if (num.parts.exponent == 2047)
 	{
 		k = (sp->numb > 3 + (int)num.parts.sign) ? sp->numb - 3 - (int)num.parts.sign : 0;		
@@ -66,7 +71,6 @@ int check_DLNG_inf(u_long_dbl *num_DBL, t_s *sp)
 {
 	int i;
 	int k;
-	
 
 	if (num_DBL->parts.exponent == 32767)
 	{

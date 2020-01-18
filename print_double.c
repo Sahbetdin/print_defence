@@ -44,13 +44,11 @@ int print_double_whole_part(uint *s)
 	return (count);
 }
 
-//можно сделать void
 int print_double_decimal_part(uint *s, int n)
 {
 	unsigned char u;
 	int i;
 
-	// write(1, "PP", 2);
 	i = 1;
 	while (i <= n)
 	{
@@ -58,7 +56,6 @@ int print_double_decimal_part(uint *s, int n)
 		write(1, &u, 1);
 		i++;
 	}
-	// write(1, "PP", 2);
 	return (n);
 }
 
