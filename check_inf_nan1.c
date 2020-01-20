@@ -50,7 +50,7 @@ void	ft_put_nan(t_s *sp)
 
 int		check_double_inf(double a, t_s *sp)
 {
-	u_double	num;
+	t_double	num;
 	int			i;
 	int			k;
 
@@ -75,7 +75,7 @@ int		check_double_inf(double a, t_s *sp)
 		return (0);
 }
 
-int		check_dlng_inf(u_long_dbl *num_dbl, t_s *sp)
+int		check_dlng_inf(t_long_dbl *num_dbl, t_s *sp)
 {
 	int			i;
 	int			k;
@@ -90,7 +90,7 @@ int		check_dlng_inf(u_long_dbl *num_dbl, t_s *sp)
 			write(1, "-", 1);
 			i++;
 		}
-		if ((ulong)num_dbl->parts.mantissa == 1LU << 63)
+		if ((t_ulong)num_dbl->parts.mantissa == 1LU << 63)
 			return (put_dlng_inf(sp) + i + k);
 		else
 		{

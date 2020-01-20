@@ -12,11 +12,11 @@
 
 #include "test_header.h"
 
-void	ft_put_prelimenaries(long num, t_s *sp)
+void	ft_put_prelimenaries(t_s *sp)
 {
 	if (sp->hash)
 	{
-		if (sp->hash == 1)
+		if (sp->hash == 1 && !sp->point)
 			write(1, "0", 1);
 		else if ((sp->s == 'x' ||
 			(sp->s == 'h' && sp->s1 == 'x') ||
@@ -35,7 +35,7 @@ void	ft_put_prelimenaries(long num, t_s *sp)
 	}
 }
 
-int		ft_put_integer_u(ulong u_value, t_s *sp)
+int		ft_put_integer_u(t_ulong u_value, t_s *sp)
 {
 	int n;
 
@@ -64,10 +64,11 @@ int		ft_put_integer_u(ulong u_value, t_s *sp)
 	return (n);
 }
 
-int		ft_dig_from_spec(ulong num, t_s *sp)
+int		ft_dig_from_spec(t_ulong num, t_s *sp)
 {
 	int	dig;
 
+	dig = 0;
 	if (sp->s == 'u' || (sp->s == 'l' && sp->s1 == 'u') ||
 		(sp->s == 'l' && sp->s1 == 'l' && sp->s2 == 'u') ||
 		(sp->s == 'h' && sp->s1 == 'u') ||
@@ -88,11 +89,11 @@ int		ft_dig_from_spec(ulong num, t_s *sp)
 	return (dig);
 }
 
-ulong	ft_cast_num_ulong(ulong num, t_s *sp)
+t_ulong	ft_cast_num_t_ulong(t_ulong num, t_s *sp)
 {
 	if (sp->s == 'u' || sp->s == 'o' ||
 		sp->s == 'x' || sp->s == 'X')
-		num = (uint)num;
+		num = (t_uint)num;
 	else if (sp->s == 'h' && (sp->s1 == 'x' || sp->s1 == 'X'))
 		num = (unsigned short)num;
 	else if (sp->s == 'h' && sp->s1 == 'h' && (sp->s2 == 'x' ||

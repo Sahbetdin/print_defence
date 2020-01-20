@@ -14,7 +14,7 @@
 
 int		ft_find_exp(t_long *lng)
 {
-	int		i;
+	t_uint	i;
 	int		j;
 
 	i = lng->whole[0];
@@ -31,10 +31,9 @@ int		ft_find_exp(t_long *lng)
 	return (j);
 }
 
-void	ft_fill_in_one_arr_e(uint *arr, t_long *lng, int j)
+void	ft_fill_in_one_arr_e(t_uint *arr, t_long *lng, int j)
 {
-	int		i;
-	int		k;
+	t_uint		i;
 
 	if (j > 0)
 	{
@@ -59,7 +58,7 @@ void	ft_fill_in_one_arr_e(uint *arr, t_long *lng, int j)
 	}
 }
 
-int		ft_put_value_in_e(uint *arr, t_s *sp, int j)
+int		ft_put_value_in_e(t_uint *arr, t_s *sp, int j)
 {
 	int		dig;
 	int		i;
@@ -105,22 +104,21 @@ int		ft_put_e_zero(t_s *sp)
 
 int		ft_put_sci(double x, t_s *sp)
 {
-	int		i;
 	int		j;
 	t_long	*lng;
-	uint	*arr;
+	t_uint	*arr;
 	int		count;
 
 	if (x == 0)
 		return (ft_put_e_zero(sp));
-	if (!(lng = create_long(x, sp)))
+	if (!(lng = create_long(x, sp->decim)))
 		return (0);
 	if (!(arr = create_one_array_e(lng)))
 		return (0);
 	j = ft_find_exp(lng);
 	ft_fill_in_one_arr_e(arr, lng, j);
 	j = ft_put_value_in_e(arr, sp, j);
-	count = 1 + 2 + (sp->plus || sp->sign);
+	count = 3 + (sp->plus || sp->sign);
 	if (sp->decim > 0)
 		count += sp->decim + 1;
 	return (count + ft_put_exp_value(j));

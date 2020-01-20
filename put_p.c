@@ -56,7 +56,6 @@ int		ft_put_p(long num, t_s *sp)
 {
 	int k;
 	int l;
-	int k1;
 	int dig;
 
 	if (num == 0)

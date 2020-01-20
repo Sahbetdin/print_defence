@@ -14,11 +14,10 @@
 
 int		ft_put_sci_ldbl(long double x, t_s *sp)
 {
-	int			i;
 	int			j;
 	t_long		*lng;
-	uint		*arr;
-	u_long_dbl	num;
+	t_uint		*arr;
+	t_long_dbl	num;
 
 	if (x == 0)
 		return (ft_put_e_zero(sp));

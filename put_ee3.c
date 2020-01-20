@@ -66,7 +66,6 @@ int	ft_put_whole_sci(double x, t_s *sp)
 	}
 	else
 	{
-		printf("k = %d \n", k);
 		ft_put_n_chars(32, k);
 		ft_put_sign(sp);
 		return (ft_put_sci(x, sp) + k);

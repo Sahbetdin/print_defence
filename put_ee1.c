@@ -55,7 +55,7 @@ int		ft_put_exp_value(int exp_)
 		return (5);
 }
 
-void	normalize_sci(uint *s, int d)
+void	normalize_sci(t_uint *s, int d)
 {
 	int		i;
 
@@ -72,12 +72,12 @@ void	normalize_sci(uint *s, int d)
 	}
 }
 
-uint	*create_one_array_e(t_long *lng)
+t_uint	*create_one_array_e(t_long *lng)
 {
-	uint	*arr;
-	int		i;
+	t_uint	*arr;
+	t_uint	i;
 
-	if (!(arr = (uint *)malloc(sizeof(uint) * (lng->whole[0] +
+	if (!(arr = (t_uint *)malloc(sizeof(t_uint) * (lng->whole[0] +
 	lng->decimal[0] + 1))))
 		return (NULL);
 	arr[0] = lng->whole[0] + lng->decimal[0];

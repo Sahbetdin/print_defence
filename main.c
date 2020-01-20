@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_sp5.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 21:48:28 by btrifle           #+#    #+#             */
-/*   Updated: 2020/01/18 21:48:31 by btrifle          ###   ########.fr       */
+/*   Created: 2020/01/20 15:48:39 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/20 15:48:40 by btrifle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_header.h"
 
-int		ft_printf(char *fmt, ...)
+int	main(void)
 {
-	va_list	ap;
-	char	*p;
-	int		ret;
-	t_s		*sp;
+	int	c1;
+	int	c2;
 
-	sp = (t_s *)malloc(sizeof(t_s));
-	va_start(ap, fmt);
-	p = fmt;
-	ret = process_specifier_main(sp, p, ap);
-	free(sp);
-	va_end(ap);
-	return (ret);
+	// c1 =    printf("%#.oA\n", 0);
+	// c2 = ft_printf("%#.oA\n", 0);
+	
+	c1 =    printf("%#.7o\n", 0);
+	c2 = ft_printf("%#.7o\n", 0);
+	
+
+	printf("| c1 = %d, c2 = %d; diff = %d\n", c1, c2, c1 - c2);
+	return (0);
 }

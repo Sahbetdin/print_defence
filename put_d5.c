@@ -110,14 +110,11 @@ int		ft_put_d_with_numb_point(long num, t_s *sp, int dig)
 int		ft_put_d(long num, t_s *sp)
 {
 	int dig;
-	int l;
-	int k;
-	int n;
 
 	num = ft_cast_num(num, sp);
 	dig = digits_in_base(num, 10);
 	if (num == -2147483648)
-		return (ft_put_int_min_with_spec(num, sp));
+		return (ft_put_int_min_with_spec(sp));
 	if (num < 0)
 	{
 		num = -num;

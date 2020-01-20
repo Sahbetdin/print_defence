@@ -12,9 +12,9 @@
 
 #include "test_header.h"
 
-uint	*raise_to_power_2(uint *s)
+t_uint	*raise_to_power_2(t_uint *s)
 {
-	int		i;
+	t_uint	i;
 	int		carry;
 
 	carry = 0;
@@ -29,14 +29,13 @@ uint	*raise_to_power_2(uint *s)
 	return (s);
 }
 
-uint	*power_of_2(uint pow, int n)
+t_uint	*power_of_2(t_uint pow, int n)
 {
-	uint	*s;
-	uint	carry;
-	int		p;
+	t_uint	*s;
+	t_uint	p;
 	int		i;
 
-	if (!(s = (uint *)malloc(sizeof(uint) * (n + 1))))
+	if (!(s = (t_uint *)malloc(sizeof(t_uint) * (n + 1))))
 		return (NULL);
 	s[0] = n;
 	s[1] = 1;
@@ -49,7 +48,7 @@ uint	*power_of_2(uint pow, int n)
 	return (s);
 }
 
-int		ft_divide_by_2_i(uint *s)
+int		ft_divide_by_2_i(t_uint *s)
 {
 	int		i;
 
@@ -59,7 +58,7 @@ int		ft_divide_by_2_i(uint *s)
 	return (i);
 }
 
-uint	*divide_by_2(uint *s)
+t_uint	*divide_by_2(t_uint *s)
 {
 	int		i;
 	int		carry;
@@ -87,15 +86,14 @@ uint	*divide_by_2(uint *s)
 	return (s);
 }
 
-uint	*divide_by_minus_2(uint *s, int n)
+t_uint	*divide_by_minus_2(t_uint *s, t_uint n)
 {
-	int		i;
-	char	u;
+	t_uint		i;
 
 	i = 1;
 	if (!s)
 	{
-		s = (uint *)malloc(sizeof(int) * (n + 1));
+		s = (t_uint *)malloc(sizeof(int) * (n + 1));
 		s[0] = n;
 		s[1] = 5;
 		while (++i <= n)

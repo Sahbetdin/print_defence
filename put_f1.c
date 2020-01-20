@@ -23,7 +23,7 @@ int		ft_put_double_help_pl_nsi(double a, t_s *sp)
 	return ((sp->plus || sp->backsp || sp->sign) + ft_put_f_double(a, sp));
 }
 
-int		ft_put_doubel_set_k(t_s *sp, int dig)
+int		ft_put_double_set_k(t_s *sp, int dig)
 {
 	int	n;
 

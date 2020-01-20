@@ -12,9 +12,8 @@
 
 #include "test_header.h"
 
-int		ft_put_long_only(u_long_dbl *num_dbl, t_s *sp)
+int		ft_put_long_only(t_long_dbl *num_dbl, t_s *sp)
 {
-	double		log2;
 	int			count;
 	int			dig;
 	t_long		*lng2;
@@ -53,14 +52,14 @@ int		ft_dig_ldbl(long double a)
 	return (i);
 }
 
-void	ft_put_from_specif_ldbl_minus(u_long_dbl *num_dbl, t_s *sp, int k)
+void	ft_put_from_specif_ldbl_minus(t_long_dbl *num_dbl, t_s *sp, int k)
 {
 	ft_put_sign(sp);
 	ft_put_long_only(num_dbl, sp);
 	ft_put_n_chars(32, k);
 }
 
-void	ft_put_from_specif_ldbl(u_long_dbl *num_dbl, t_s *sp, int k)
+void	ft_put_from_specif_ldbl(t_long_dbl *num_dbl, t_s *sp, int k)
 {
 	if (sp->minus)
 		ft_put_from_specif_ldbl_minus(num_dbl, sp, k);

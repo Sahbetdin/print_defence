@@ -12,7 +12,7 @@
 
 #include "test_header.h"
 
-int		ft_itoa_base_unsigned(ulong u_value, int base, int lett_type)
+int		ft_itoa_base_unsigned(t_ulong u_value, int base, int lett_type)
 {
 	char	*s;
 	int		n;
@@ -40,4 +40,3 @@ int		ft_itoa_base_unsigned(ulong u_value, int base, int lett_type)
 	free(s);
 	return (n);
 }
-

@@ -12,11 +12,11 @@
 
 #include "test_header.h"
 
-t_long	*ft_create_long_pre(u_long_dbl *num_dbl)
+t_long	*ft_create_long_pre(t_long_dbl *num_dbl)
 {
 	double		log2;
 	t_long		*lng2;
-	uint		exp;
+	t_uint		exp;
 	int			n;
 
 	log2 = 0.30103;
@@ -30,7 +30,7 @@ t_long	*ft_create_long_pre(u_long_dbl *num_dbl)
 	}
 	else
 	{
-		if (!(lng2->whole = (uint *)malloc(sizeof(uint) * 2)))
+		if (!(lng2->whole = (t_uint *)malloc(sizeof(t_uint) * 2)))
 			return (0);
 		lng2->whole[0] = 1;
 		lng2->whole[1] = 0;
@@ -38,12 +38,12 @@ t_long	*ft_create_long_pre(u_long_dbl *num_dbl)
 	return (lng2);
 }
 
-t_long	*ft_create_long_whole(u_long_dbl *num_dbl)
+t_long	*ft_create_long_whole(t_long_dbl *num_dbl)
 {
 	t_long		*lng2;
-	uint		exp;
+	t_uint		exp;
 	int			n;
-	uint		*b;
+	t_uint		*b;
 
 	lng2 = ft_create_long_pre(num_dbl);
 	if (num_dbl->parts.exponent >= 16383)
@@ -64,26 +64,27 @@ t_long	*ft_create_long_whole(u_long_dbl *num_dbl)
 	return (lng2);
 }
 
-int		ft_create_n_temp(uint exp_, int d)
+int		ft_create_n_temp(t_uint exp_, int d, t_uint z)
 {
 	int			n;
 	double		log2;
+	double		log5;
 
 	log2 = 0.30103;
-	if (exp_ >= 16383)
+	log5 = 0.69897;
+	if (exp_ >= z)
 		n = (d > 64) ? d + 4 : 64;
 	else
 	{
-		exp_ = 16383 - exp_;
-		n = (log2 * exp_ + 70);
+		exp_ = z - exp_;
+		n = (log5 * exp_ + d + 50);
 	}
 	return (n);
 }
 
-uint	*ft_create_b_temp(uint exp_, int d, int n)
+t_uint	*ft_create_b_temp(t_uint exp_, t_uint n)
 {
-	uint		*b;
-	double		log2;
+	t_uint		*b;
 
 	if (exp_ >= 16383)
 		b = divide_by_minus_2(NULL, n);
@@ -100,15 +101,13 @@ uint	*ft_create_b_temp(uint exp_, int d, int n)
 	return (b);
 }
 
-void	ft_create_long_decimal(t_long *lng2, u_long_dbl *num_dbl, int d)
+void	ft_create_long_decimal(t_long *lng2, t_long_dbl *num_dbl, int d)
 {
-	uint		*b;
-	int			n;
-	uint		exp_;
-	double		log2;
+	t_uint		*b;
+	t_uint		n;
 
-	n = ft_create_n_temp(num_dbl->parts.exponent, d);
-	b = ft_create_b_temp(num_dbl->parts.exponent, d, n);
+	n = ft_create_n_temp(num_dbl->parts.exponent, d, 16383);
+	b = ft_create_b_temp(num_dbl->parts.exponent, n);
 	if (num_dbl->parts.exponent >= 16383)
 		lng2->decimal = set_arithmetic_zeros(n);
 	else

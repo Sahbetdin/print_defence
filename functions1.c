@@ -33,8 +33,6 @@ void	ft_put_zeros_backsp(t_s *sp)
 
 int		ft_putchar_c(char c, t_s *sp)
 {
-	int		k;
-
 	if (sp->minus)
 	{
 		write(1, &c, 1);

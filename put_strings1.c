@@ -37,7 +37,6 @@ int		ft_put_percentage(t_s *sp)
 int		ft_put_null(t_s *sp)
 {
 	int k;
-	int n;
 
 	if (sp->point)
 		k = sp->numb - sp->decim;

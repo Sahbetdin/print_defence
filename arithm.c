@@ -12,9 +12,9 @@
 
 #include "test_header.h"
 
-uint	*add_arithmetics(uint *a, uint *b)
+t_uint	*add_arithmetics(t_uint *a, t_uint *b)
 {
-	int		i;
+	t_uint		i;
 
 	i = 1;
 	while (i < a[0])
@@ -30,12 +30,12 @@ uint	*add_arithmetics(uint *a, uint *b)
 	return (a);
 }
 
-uint	*set_arithmetic_zeros(int n)
+t_uint	*set_arithmetic_zeros(int n)
 {
-	uint	*s;
+	t_uint	*s;
 	int		i;
 
-	s = (uint *)malloc(sizeof(uint) * (n + 1));
+	s = (t_uint *)malloc(sizeof(t_uint) * (n + 1));
 	s[0] = n;
 	i = 0;
 	while (++i <= n)
@@ -43,7 +43,7 @@ uint	*set_arithmetic_zeros(int n)
 	return (s);
 }
 
-uint	*add_arithmetics_minus(uint *a, uint *b)
+t_uint	*add_arithmetics_minus(t_uint *a, t_uint *b)
 {
 	int		i;
 

@@ -21,13 +21,11 @@ void	free_long_arithm(t_long *lng)
 
 int		put_double_new(double x, t_s *sp)
 {
-	int			n;
 	int			count;
-	int			dig;
 	t_long		*lng;
 
 	count = 0;
-	if (!(lng = create_long(x, sp)))
+	if (!(lng = create_long(x, sp->decim)))
 		return (0);
 	normalize(lng->whole, lng->decimal, sp->decim);
 	count += print_double_whole_part(lng->whole);
@@ -39,7 +37,6 @@ int		put_double_new(double x, t_s *sp)
 	write(1, ".", 1);
 	count++;
 	print_double_decimal_part(lng->decimal, sp->decim);
-	count += dig;
 	free_long_arithm(lng);
 	return (count);
 }
@@ -54,30 +51,30 @@ int		ft_put_f_double(double a, t_s *sp)
 		return (0);
 }
 
-int		ft_memory_float(double a, t_s *sp)
+int		ft_memory_float(double a)
 {
-	u_double	num;
+	t_double	num;
 
 	num.dbl = a;
 	write(1, "sign:     ", 10);
-	print_binary_uint(num.parts.sign, 0);
+	print_binary_t_uint(num.parts.sign, 0);
 	write(1, "exponent: ", 10);
-	print_binary_uint(num.parts.exponent, 10);
+	print_binary_t_uint(num.parts.exponent, 10);
 	write(1, "mantissa: ", 10);
-	print_binary_ulong(num.parts.mantissa, 51);
+	print_binary_t_ulong(num.parts.mantissa, 51);
 	return (94);
 }
 
-int		ft_memory_ldbl(long double a, t_s *sp)
+int		ft_memory_ldbl(long double a)
 {
-	u_long_dbl	num;
+	t_long_dbl	num;
 
 	num.l_dbl = a;
 	write(1, "sign:     ", 10);
-	print_binary_uint(num.parts.sign, 0);
+	print_binary_t_uint(num.parts.sign, 0);
 	write(1, "exponent: ", 10);
-	print_binary_uint(num.parts.exponent, 14);
+	print_binary_t_uint(num.parts.exponent, 14);
 	write(1, "mantissa: ", 10);
-	print_binary_ulong(num.parts.mantissa, 63);
+	print_binary_t_ulong(num.parts.mantissa, 63);
 	return (0);
 }

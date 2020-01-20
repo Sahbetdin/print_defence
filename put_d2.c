@@ -12,7 +12,7 @@
 
 #include "test_header.h"
 
-int		ft_put_int_min_with_spec(int num, t_s *sp)
+int		ft_put_int_min_with_spec(t_s *sp)
 {
 	int l;
 	int k;

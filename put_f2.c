@@ -19,20 +19,12 @@ void	ft_put_double_help_npl_nsi_mi_ba(double a, t_s *sp, int k)
 	ft_put_n_chars(32, k);
 }
 
-void	ft_put_double_help_pl_mi(double a, t_s *sp, int k)
+void	ft_put_double_help_npl_mi(double a, t_s *sp, int k)
 {
 	if (sp->sign)
 		write(1, "-", 1);
 	else if (sp->backsp)
 		write(1, " ", 1);
-	ft_put_f_double(a, sp);
-	ft_put_n_chars(32, k);
-}
-
-void	ft_put_double_help_npl_mi(double a, t_s *sp, int k)
-{
-	if (sp->sign)
-		write(1, "-", 1);
 	ft_put_f_double(a, sp);
 	ft_put_n_chars(32, k);
 }

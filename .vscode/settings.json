@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "test_header.h": "c",
-        "__locale": "c",
-        "ios": "c"
-    }
-}

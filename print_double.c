@@ -12,9 +12,9 @@
 
 #include "test_header.h"
 
-void	print_memory(uint *s)
+void	print_memory(t_uint *s)
 {
-	int		i;
+	t_uint	i;
 	char	u;
 
 	ft_putnbr_positive(s[0]);
@@ -31,7 +31,7 @@ void	print_memory(uint *s)
 	write(1, "\n", 1);
 }
 
-int		print_double_whole_part(uint *s)
+int		print_double_whole_part(t_uint *s)
 {
 	int		i;
 	int		count;
@@ -56,9 +56,9 @@ int		print_double_whole_part(uint *s)
 	return (count);
 }
 
-int		print_double_decimal_part(uint *s, int n)
+int		print_double_decimal_part(t_uint *s, int n)
 {
-	uchar	u;
+	t_uchar	u;
 	int		i;
 
 	i = 1;
@@ -71,9 +71,9 @@ int		print_double_decimal_part(uint *s, int n)
 	return (n);
 }
 
-void	print_binary_uint(uint num, int dig)
+void	print_binary_t_uint(t_uint num, int dig)
 {
-	uint	flag;
+	t_uint	flag;
 
 	if (dig > 31 || dig < 0)
 		return ;
@@ -89,9 +89,9 @@ void	print_binary_uint(uint num, int dig)
 	write(1, "\n", 1);
 }
 
-void	print_binary_ulong(ulong num, int dig)
+void	print_binary_t_ulong(t_ulong num, int dig)
 {
-	ulong	flag;
+	t_ulong	flag;
 
 	if (dig > 63 || dig < 0)
 		return ;

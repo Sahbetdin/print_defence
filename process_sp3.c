@@ -36,7 +36,6 @@ char	*parse_sier(char *p, t_s *sp)
 {
 	char *ptr_lett;
 	char *ptr_point;
-	char *ptr_zero;
 
 	clear_spec(sp);
 	if ((ptr_lett = find_spec(p, sp)))

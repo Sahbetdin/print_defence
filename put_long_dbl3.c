@@ -17,7 +17,7 @@ int		ft_put_long_double(long double x, t_s *sp)
 	int			dig;
 	int			k;
 	int			count;
-	u_long_dbl	num;
+	t_long_dbl	num;
 
 	if (x < 0)
 	{

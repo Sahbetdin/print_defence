@@ -12,7 +12,7 @@
 
 #include "test_header.h"
 
-void	normalize(uint *a, uint *s, int i)
+void	normalize(t_uint *a, t_uint *s, int i)
 {
 	if (s[i + 1] > 4)
 	{
@@ -37,10 +37,10 @@ void	normalize(uint *a, uint *s, int i)
 	}
 }
 
-t_long	*create_long_whole_pre(u_double *num_union_f)
+t_long	*create_long_whole_pre(t_double *num_union_f)
 {
 	t_long		*lng;
-	uint		exp;
+	t_uint		exp;
 	int			n;
 
 	lng = (t_long *)malloc(sizeof(t_long));
@@ -55,7 +55,7 @@ t_long	*create_long_whole_pre(u_double *num_union_f)
 	else
 	{
 		exp = 1023 - num_union_f->parts.exponent;
-		if (!(lng->whole = (uint *)malloc(sizeof(uint) * 2)))
+		if (!(lng->whole = (t_uint *)malloc(sizeof(t_uint) * 2)))
 			return (0);
 		lng->whole[0] = 1;
 		lng->whole[1] = 0;
@@ -63,11 +63,11 @@ t_long	*create_long_whole_pre(u_double *num_union_f)
 	return (lng);
 }
 
-t_long	*create_long_whole(u_double *num_union_f)
+t_long	*create_long_whole(t_double *num_union_f)
 {
 	t_long	*lng;
-	uint	*b;
-	uint	exp;
+	t_uint	*b;
+	t_uint	exp;
 	int		n;
 
 	lng = create_long_whole_pre(num_union_f);
@@ -91,10 +91,10 @@ t_long	*create_long_whole(u_double *num_union_f)
 	return (lng);
 }
 
-uint	*ft_temp_b_floats(u_double *num_union_f, int n)
+t_uint	*ft_temp_b_floats(t_double *num_union_f, t_uint n)
 {
-	uint		exp;
-	uint		*b;
+	t_uint		exp;
+	t_uint		*b;
 
 	b = NULL;
 	if (num_union_f->parts.exponent < 1023)
@@ -112,17 +112,17 @@ uint	*ft_temp_b_floats(u_double *num_union_f, int n)
 	return (b);
 }
 
-t_long	*create_long(double x, t_s *sp)
+t_long	*create_long(double x, int d)
 {
 	t_long		*lng;
-	u_double	num;
-	uint		*b;
-	int			n;
+	t_double	num;
+	t_uint		*b;
+	t_uint		n;
 
 	num.dbl = x;
 	if (!(lng = create_long_whole(&num)))
 		return (NULL);
-	n = 0.30103 * (1023 - num.parts.exponent) + 716;
+	n = ft_create_n_temp(num.parts.exponent, d, 1023);
 	lng->decimal = set_arithmetic_zeros(n);
 	b = ft_temp_b_floats(&num, n);
 	if (num.parts.exponent < 1023)

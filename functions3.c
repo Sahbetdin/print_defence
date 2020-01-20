@@ -27,7 +27,7 @@ int	digits_in_base(long value, int base)
 	return (i);
 }
 
-int	digits_in_base_unsigned(ulong u_value, int base)
+int	digits_in_base_unsigned(t_ulong u_value, int base)
 {
 	int		i;
 

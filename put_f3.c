@@ -41,7 +41,7 @@ void	process_sp_for_double(double a, t_s *sp, int k)
 	else if (!sp->plus && !sp->sign && sp->minus && sp->backsp)
 		ft_put_double_help_npl_nsi_mi_ba(a, sp, k);
 	else if (!sp->plus && sp->minus)
-		ft_put_double_help_pl_mi(a, sp, k);
+		ft_put_double_help_npl_mi(a, sp, k);
 	else if (!sp->plus && sp->minus)
 		ft_put_double_help_npl_mi(a, sp, k);
 	else if (!sp->plus && !sp->sign && sp->backsp)
@@ -57,10 +57,8 @@ void	process_sp_for_double(double a, t_s *sp, int k)
 int		ft_put_whole_double(double a, t_s *sp)
 {
 	int			k;
-	int			l;
 	int			n;
 	int			dig;
-	u_double	num;
 
 	if ((n = check_double_inf(a, sp)))
 		return (n);
@@ -73,8 +71,8 @@ int		ft_put_whole_double(double a, t_s *sp)
 		return (ft_put_whole_sci(a, sp));
 	dig = digits_in_base((long)a, 10);
 	if (!(sp->numb || sp->decim))
-		ft_put_double_help_pl_nsi(a, sp);
-	n = ft_put_doubel_set_k(sp, dig);
+		return (ft_put_double_help_pl_nsi(a, sp));
+	n = ft_put_double_set_k(sp, dig);
 	k = (sp->numb > n) ? sp->numb - n : 0;
 	process_sp_for_double(a, sp, k);
 	return (k + n);
