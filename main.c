@@ -20,8 +20,8 @@ int	main(void)
 	// c1 =    printf("%#.oA\n", 0);
 	// c2 = ft_printf("%#.oA\n", 0);
 	
-	c1 =    printf("%#.7o\n", 0);
-	c2 = ft_printf("%#.7o\n", 0);
+	c1 =    printf("%#.x\n", 0);
+	c2 = ft_printf("%#.x\n", 0);
 	
 
 	printf("| c1 = %d, c2 = %d; diff = %d\n", c1, c2, c1 - c2);

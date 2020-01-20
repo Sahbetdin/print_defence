@@ -76,14 +76,17 @@ int		ft_put_x_o_mi_nmi(t_ulong num, t_s *sp, int k, int l)
 		// else
 			ft_put_n_chars(32, k);
 		// ft_put_n_chars(32, k);
-		if (sp->s != 'o')
+
+		if (sp->s != 'o' && (sp->s == 'x' && num != 0))
 			ft_put_prelimenaries(sp);
-			ft_put_n_chars(48, l);
-// printf("l = %d\n", l);
-	// if (num != 0)
-		if (num != 0 && !sp->point)
+		ft_put_n_chars(48, l);
+	//printf("l = %d\n", l);
+
+	if (!(num == 0 && sp->decim == 0 && sp->point))
+		// if (num != 0)
 			n = ft_put_integer_u(num, sp);
 	}
+	// printf("n = %d\n", n);
 	return (n);
 }
 

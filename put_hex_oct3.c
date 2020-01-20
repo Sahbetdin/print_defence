@@ -20,29 +20,39 @@ int		ft_put_x_o(t_ulong num, t_s *sp)
 	int k;
 
 	num = ft_cast_num_t_ulong(num, sp);
-	dig = (num == 0) ? 0 : ft_dig_from_spec(num, sp);
+	dig = (num == 0) ? 1 : ft_dig_from_spec(num, sp);
 // printf("dig = %d\n", dig);
 
 	ft_modify_from_hash(num, sp);
 	if (sp->point == 0)
 		sp->decim = 0;
+	// print_sp(sp);
+	if (sp->point && sp->decim == 0 && num == 0)
+		dig = 0;
 	l = (sp->decim > dig) ? sp->decim - dig : 0;
-// printf("l = %d\n", l);
 // printf("sp->hash = %d\n", sp->hash);
+// printf("l = %d, k = %d, dig = %d\n", l, k, dig);
 
-	if (l == 0 && sp->hash)
+	if (num == 0 && l == 0 && sp->hash && sp->point && sp->s == 'o')
 		l = 1;
-// printf("l = %d\n", l);
+	else if (l == 0 && sp->hash && sp->s == 'o')
+		l = 1;
 
 	k = sp->numb - dig - l;
 	if (k < 0)
 		k = 0;
-	ft_put_x_o_mi_nmi(num, sp, k, l);
-	n = dig + k + l;
 // printf("l = %d, k = %d, dig = %d\n", l, k, dig);
 
+	ft_put_x_o_mi_nmi(num, sp, k, l);
+	n = dig + k + l;
+	// print_sp(sp);
 // printf("n = %d\n", n);
-	return (n);
+
+	if (sp->s != 'o' && (sp->s == 'x' && num != 0))
+		n += sp->hash;
+// printf("n = %d\n", n);
+
+// printf("n = %d\n", n);
 // 	print_sp(sp);
 // 	if (sp->point)
 // 	{
@@ -63,7 +73,7 @@ int		ft_put_x_o(t_ulong num, t_s *sp)
 // 	}
 // 	else
 // 		n = ft_put_x_o_npo(num, sp, dig);
-	return (n + sp->hash);
+	return (n + (sp->hash && num != 0));
 }
 
 void	ft_modify_from_hash(t_ulong num, t_s *sp)
