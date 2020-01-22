@@ -77,7 +77,7 @@ int		ft_create_n_temp(t_uint exp_, int d, t_uint z)
 	else
 	{
 		exp_ = z - exp_;
-		n = (log5 * exp_ + d + 50);
+		n = (log5 * exp_ + d + 40);
 	}
 	return (n);
 }

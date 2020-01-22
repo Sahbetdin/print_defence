@@ -12,13 +12,9 @@
 
 #ifndef TEST_HEADER_H
 # define TEST_HEADER_H
-# include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <string.h>
 # include <stdlib.h>
-# include <limits.h>
-# include <float.h>
 
 typedef struct	s_s
 {
@@ -122,7 +118,6 @@ void			print_binary_t_ulong(t_ulong num, int dig);
 /*
 ** process_sp1.c
 */
-void			print_sp(t_s *sp);
 void			clear_spec(t_s *sp);
 void			handle_lhl(char *p, t_s *sp);
 char			*find_spec(char *p, t_s *sp);
@@ -255,25 +250,20 @@ void			ft_put_double_help_else(double a, t_s *sp, int k);
 void			process_sp_for_double(double a, t_s *sp, int k);
 int				ft_put_whole_double(double a, t_s *sp);
 /*
-** put_hex_oct1.c
+** put_o_u_x1.c
 */
 void			ft_put_prelimenaries(t_s *sp);
+int				ft_put_o_x_if_u(t_s *sp);
 int				ft_put_integer_u(t_ulong u_value, t_s *sp);
-int				ft_dig_from_spec(t_ulong num, t_s *sp);
+int				ft_dig_x_o(t_ulong num, t_s *sp);
+void			ft_put_x_o_l_k(t_s *sp, int l, int k);
+/*
+** put_o_u_x2.c
+*/
+int				ft_put_x_o_num(t_ulong num, t_s *sp, int k, int dig);
 t_ulong			ft_cast_num_t_ulong(t_ulong num, t_s *sp);
-/*
-** put_hex_oct2.c
-*/
-int				ft_put_x_o_npo_nmi(t_ulong num, t_s *sp, int k);
-int				ft_put_x_o_npo(t_ulong num, t_s *sp, int dig);
-int				ft_put_x_o_mi_nmi(t_ulong num, t_s *sp, int k, int l);
-int				ft_x_o_point_get_k(t_s *sp, int dig, int l);
-int				ft_put_x_o_fet_l(t_s *sp, int dig);
-/*
-** put_hex_oct3.c
-*/
+void			ft_put_x_o_process_dig(t_ulong num, t_s *sp, int *addr_dig);
 int				ft_put_x_o(t_ulong num, t_s *sp);
-void			ft_modify_from_hash(t_ulong num, t_s *sp);
 /*
 ** put_long_e.c
 */

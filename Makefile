@@ -12,9 +12,8 @@ SRC = arithm.c check_inf_nan1.c check_inf_nan2.c \
 	put_d1.c put_d2.c put_d3.c put_d4.c put_d5.c\
 	put_double1.c put_double2.c put_ee1.c put_ee2.c put_ee3.c \
 	put_f1.c put_f2.c put_f3.c\
-	put_hex_oct1.c put_hex_oct2.c put_hex_oct3.c\
 	put_long_dbl1.c put_long_dbl2.c put_long_dbl3.c \
-	put_long_e.c put_p.c \
+	put_long_e.c put_o_u_x1.c put_o_u_x2.c put_p.c \
 	put_strings1.c put_strings2.c \
 	two.c
 
@@ -27,11 +26,11 @@ HEAD = test_header.h
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rc $@ $^
-	@ranlib $(NAME)
+#	@ar rc $@ $^
+#	@ranlib $(NAME)
 
 %.o: %.c
-	@$(CC) $< -c -o $@ -I.$(HEAD)
+	@$(CC) $(CFLAGS) $< -c -o $@ -I.$(HEAD)
 
 test: all
 	@gcc main.c $(NAME)

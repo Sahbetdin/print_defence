@@ -59,6 +59,7 @@ int		process_specifier_main(t_s *sp, char *p, va_list ap)
 {
 	char	*s;
 	int		ret;
+	int n;
 
 	ret = 0;
 	while (*p)
@@ -67,7 +68,8 @@ int		process_specifier_main(t_s *sp, char *p, va_list ap)
 		{
 			if ((s = parse_sier(p + 1, sp)))
 			{
-				ret += process_specifier(sp, ap);
+				n = process_specifier(sp, ap);
+				ret += n;
 				if (sp->s1)
 					p = process_specifier_s1_s2(s, sp->s2);
 				else

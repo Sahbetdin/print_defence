@@ -28,6 +28,7 @@ int		ft_put_sci_ldbl(long double x, t_s *sp)
 		return (0);
 	j = ft_find_exp(lng);
 	ft_fill_in_one_arr_e(arr, lng, j);
+	free_long_arithm(lng);
 	j = ft_put_value_in_e(arr, sp, j);
 	if (sp->decim > 0)
 		return (4 + sp->decim + (sp->plus || sp->sign) + ft_put_exp_value(j));

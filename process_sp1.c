@@ -12,23 +12,6 @@
 
 #include "test_header.h"
 
-void	print_sp(t_s *sp)
-{
-	printf("spec: %c\n", sp->s);
-	printf("spec1: %c\n", sp->s1);
-	printf("spec2: %c\n", sp->s2);
-	printf("zero: %d\n", sp->zero);
-	printf("point: %d\n", sp->point);
-	printf("numb: %d\n", sp->numb);
-	printf("decim: %d\n", sp->decim);
-	printf("plus: %d\n", sp->plus);
-	printf("minus: %d\n", sp->minus);
-	printf("backsp: %d\n", sp->backsp);
-	printf("sign: %d\n", sp->sign);
-	printf("hash: %d\n", sp->hash);
-	return ;
-}
-
 void	clear_spec(t_s *sp)
 {
 	sp->s = '\0';
