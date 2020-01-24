@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 int		ft_put_sci_ldbl(long double x, t_s *sp)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 t_long	*ft_create_long_pre(t_long_dbl *num_dbl)
 {
@@ -77,7 +77,7 @@ int		ft_create_n_temp(t_uint exp_, int d, t_uint z)
 	else
 	{
 		exp_ = z - exp_;
-		n = (log5 * exp_ + d + 40);
+		n = (log5 * exp_ + d + 50);
 	}
 	return (n);
 }
@@ -109,10 +109,14 @@ void	ft_create_long_decimal(t_long *lng2, t_long_dbl *num_dbl, int d)
 	n = ft_create_n_temp(num_dbl->parts.exponent, d, 16383);
 	b = ft_create_b_temp(num_dbl->parts.exponent, n);
 	if (num_dbl->parts.exponent >= 16383)
-		lng2->decimal = set_arithmetic_zeros(n);
+	{
+		if (!(lng2->decimal = set_arithmetic_zeros(n)))
+			return ;
+	}
 	else
 	{
-		lng2->decimal = set_arithmetic_zeros(n);
+		if (!(lng2->decimal = set_arithmetic_zeros(n)))
+			return ;
 		add_arithmetics_minus(lng2->decimal, b);
 		divide_by_minus_2(b, n);
 	}

@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_strings2.c                                     :+:      :+:    :+:   */
+/*   put_double0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 21:38:55 by btrifle           #+#    #+#             */
-/*   Updated: 2020/01/18 21:38:56 by btrifle          ###   ########.fr       */
+/*   Created: 2020/01/24 13:30:56 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/24 13:30:58 by btrifle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		ft_put_string(char *str, t_s *sp)
+void	normalize(t_uint *a, t_uint *s, int i)
 {
-	int		k;
-	int		n;
-	int		l;
-	char	*nil;
-
-	nil = ft_strdup("(null)");
-	if (!str)
+	if (s[i + 1] > 4)
 	{
-		n = 6;
-		str = nil;
+		s[i]++;
+		while (s[i] > 9 && i > 0)
+		{
+			s[i] -= 10;
+			s[i - 1] += 1;
+			i--;
+		}
+		if (i == 0)
+		{
+			a[1]++;
+			i = 1;
+			while (a[i] > 9)
+			{
+				a[i] -= 10;
+				a[i + 1]++;
+				i++;
+			}
+		}
 	}
-	else
-		n = ft_strlen(str);
-	l = ft_get_l_strings(sp, n);
-	k = ft_get_k_strings(sp, l, n);
-	ft_put_str_k_l(sp, str, k, l);
-	free(nil);
-	return (l + k);
 }

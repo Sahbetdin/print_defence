@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 void	print_memory(t_uint *s)
 {

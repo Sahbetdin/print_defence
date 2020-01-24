@@ -10,32 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
-
-void	normalize(t_uint *a, t_uint *s, int i)
-{
-	if (s[i + 1] > 4)
-	{
-		s[i]++;
-		while (s[i] > 9 && i > 0)
-		{
-			s[i] -= 10;
-			s[i - 1] += 1;
-			i--;
-		}
-		if (i == 0)
-		{
-			a[1]++;
-			i = 1;
-			while (a[i] > 9)
-			{
-				a[i] -= 10;
-				a[i + 1]++;
-				i++;
-			}
-		}
-	}
-}
+#include "header.h"
 
 t_long	*create_long_whole_pre(t_double *num_union_f)
 {
@@ -112,6 +87,12 @@ t_uint	*ft_temp_b_floats(t_double *num_union_f, t_uint n)
 	return (b);
 }
 
+void	form_decimal_part(t_uint n, t_uint *dec, t_uint *b)
+{
+	add_arithmetics_minus(dec, b);
+	divide_by_minus_2(b, n);
+}
+
 t_long	*create_long(double x, int d)
 {
 	t_long		*lng;
@@ -123,13 +104,11 @@ t_long	*create_long(double x, int d)
 	if (!(lng = create_long_whole(&num)))
 		return (NULL);
 	n = ft_create_n_temp(num.parts.exponent, d, 1023);
-	lng->decimal = set_arithmetic_zeros(n);
+	if (!(lng->decimal = set_arithmetic_zeros(n)))
+		return (NULL);
 	b = ft_temp_b_floats(&num, n);
 	if (num.parts.exponent < 1023)
-	{
-		add_arithmetics_minus(lng->decimal, b);
-		divide_by_minus_2(b, n);
-	}
+		form_decimal_part(n, lng->decimal, b);
 	while (lng->flag)
 	{
 		if (lng->flag & num.parts.mantissa)

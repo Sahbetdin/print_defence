@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 void	ft_put_prelimenaries(t_s *sp)
 {

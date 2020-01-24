@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 int		ft_put_x_o_num(t_ulong num, t_s *sp, int k, int dig)
 {

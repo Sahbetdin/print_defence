@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 t_uint	*add_arithmetics(t_uint *a, t_uint *b)
 {
@@ -35,7 +35,8 @@ t_uint	*set_arithmetic_zeros(int n)
 	t_uint	*s;
 	int		i;
 
-	s = (t_uint *)malloc(sizeof(t_uint) * (n + 1));
+	if (!(s = (t_uint *)malloc(sizeof(t_uint) * (n + 1))))
+		return (NULL);
 	s[0] = n;
 	i = 0;
 	while (++i <= n)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 void	clear_spec(t_s *sp)
 {
@@ -52,7 +52,8 @@ char	*find_spec(char *p, t_s *sp)
 {
 	char	*lett;
 
-	lett = ft_strdup("diuolhxXfFLeEgGaAcspnVW%");
+	if (!(lett = ft_strdup("diuolhxXfFLeEgGaAcspnVW%")))
+		return (NULL);
 	while (*p)
 	{
 		if (*p == ' ' || *p == '\t' || *p == '.' || (*p >= '0' && *p <= '9')

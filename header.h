@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_header.h                                      :+:      :+:    :+:   */
+/*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btrifle <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 11:01:59 by btrifle           #+#    #+#             */
-/*   Updated: 2020/01/20 11:02:01 by btrifle          ###   ########.fr       */
+/*   Created: 2020/01/24 13:44:14 by btrifle           #+#    #+#             */
+/*   Updated: 2020/01/24 13:44:18 by btrifle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_HEADER_H
-# define TEST_HEADER_H
+#ifndef HEADER_H
+# define HEADER_H
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
@@ -60,6 +60,7 @@ typedef struct	s_long
 {
 	t_uint		*whole;
 	t_uint		*decimal;
+	
 	t_ulong		flag;
 }				t_long;
 /*
@@ -106,6 +107,7 @@ int				ft_putlong(long n);
 /*
 ** functions4.c
 */
+void			free_letters_s(char *letters, char *s);
 int				ft_itoa_base_unsigned(t_ulong u_value, int base, int lett_type);
 /*
 ** print_double.c

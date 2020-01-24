@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 void	ft_put_d_npl_nsi_mi_ba(long num, int *k, int l, t_s *sp)
 {

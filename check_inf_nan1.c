@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 /*
 ** writes "inf" or "INF" depending on %f or %F specifier

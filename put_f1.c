@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 int		ft_put_double_help_pl_nsi(double a, t_s *sp)
 {

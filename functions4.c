@@ -10,7 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
+
+void	free_letters_s(char *letters, char *s)
+{
+	free(letters);
+	free(s);
+}
 
 int		ft_itoa_base_unsigned(t_ulong u_value, int base, int lett_type)
 {
@@ -21,6 +27,7 @@ int		ft_itoa_base_unsigned(t_ulong u_value, int base, int lett_type)
 
 	if (u_value == 0)
 		return (ft_putchar('0'));
+	letters = NULL;
 	if (lett_type)
 		letters = ft_strdup("0123456789ABCDEF");
 	else
@@ -36,7 +43,6 @@ int		ft_itoa_base_unsigned(t_ulong u_value, int base, int lett_type)
 		i--;
 	}
 	ft_putstr(s);
-	free(letters);
-	free(s);
+	free_letters_s(letters, s);
 	return (n);
 }

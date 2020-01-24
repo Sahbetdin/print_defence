@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_header.h"
+#include "header.h"
 
 int		ft_put_long_only(t_long_dbl *num_dbl, t_s *sp)
 {
